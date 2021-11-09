@@ -13,8 +13,9 @@ public class Board extends JPanel implements Runnable, KeyListener {
   private static final long serialVersionUID = 1L;
   public int WIDTH = 500, HEIGHT = 500;
   public Color color;
-  public boolean boardDrawed;
-  public boolean running, updatingSnake, updatingGame, firstSnake, createNewApple, isOut, right = true, left = false, up = false, down = false;
+  public boolean boardDraw;
+
+  public boolean running, updatingSnake, updatingGame, firstSnake, createNewApple = false, isOut, right = true, left = false, up = false, down = false;
   private Thread thread;
   private SnakePart s;
   private ArrayList<SnakePart> snake;
@@ -25,16 +26,32 @@ public class Board extends JPanel implements Runnable, KeyListener {
 
   public int getWidth(){return WIDTH;}
   public int getHeight(){return HEIGHT;}
+
+  public boolean getBoardDrawed(){return boardDraw;}
+  public boolean getUpdatingSnake() { return updatingSnake;}
+  public boolean getUpdatingGame() { return updatingGame;}
+  public boolean getFirstSnake() { return firstSnake;}
+  public boolean getCreateNewApple() { return createNewApple;}
+  public boolean getIsOut() { return isOut;}
+
+  public Color getColor() {
+    return color;
+  }
+  public void setColor(Color c){ color=c;}
+
   public boolean getIsRunning(){ return running;}
+
   public ArrayList<Apple> getApples(){ return apples;}
   public ArrayList<SnakePart> getSnake(){ return snake;}
+
   public void setIsRunning(boolean run){running= run;}
   public void setxCordSnake(int cord){xCordSnake =cord;}
   public void setyCordSnake(int cord){yCordSnake =cord;}
   public int getxCordSnake(){return xCordSnake;}
   public int getyCordSnake(){return yCordSnake;}
-  public boolean getUpdatingGame() { return updatingGame;}
-  public boolean getFirstSnake() { return firstSnake;}
+  public Thread getThread(){return thread;}
+  public int getTileSize(){return tileSize;}
+  public void setCreateNewApple(boolean var){createNewApple=var;}
 
 
   public Board(){
@@ -99,7 +116,7 @@ public class Board extends JPanel implements Runnable, KeyListener {
       apples.get(i).draw(g);
     }
 
-    boardDrawed = true;
+    boardDraw = true;
   }
 
 
