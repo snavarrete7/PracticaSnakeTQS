@@ -7,12 +7,14 @@ public class SnakePart{
   public int yCord;
   public int width;
   public int height;
+  public boolean snakeDraw;
 
   public SnakePart(){
     this.xCord=0;
     this.yCord=0;
     this.width=0;
     this.height=0;
+    this.snakeDraw = false;
   }
 
   public SnakePart(int xCord, int yCord, int tileSize){
@@ -33,15 +35,16 @@ public class SnakePart{
     return xCord;
   }
   public void setxCord(int cx) {xCord = cx;}
-
   public int getYCord(){ return yCord; }
   public void setyCord(int cy) {yCord = cy;}
-
   public int getWidth(){ return width; }
-
   public int getHeight(){ return height; }
 
-
+  public void draw(Graphics g) {
+    g.setColor(Color.GREEN);
+    g.fillRect(xCord * width, yCord * height, width, height);
+    snakeDraw=true;
+  }
 
 
 

@@ -8,6 +8,7 @@ public class Apple {
   public int yCord;
   public int width;
   public int height;
+  public boolean appleDraw;
 
   public Apple(){
     Random rand = new Random(System.currentTimeMillis());
@@ -17,6 +18,7 @@ public class Apple {
     this.yCord =(int) randY;
     this.width = 10;
     this.height = 10;
+    this.appleDraw = false;
 
   }
   public Apple(int xCord, int yCord, int size){
@@ -39,7 +41,11 @@ public class Apple {
   public void setxCord(int cord){ xCord=cord;}
   public void setyCord(int cord){yCord=cord;}
 
-
+  public void draw(Graphics g) {
+    g.setColor(Color.RED);
+    g.fillRect(xCord * width, yCord * height, width, height);
+    appleDraw = true;
+  }
 
 
 
