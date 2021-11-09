@@ -46,6 +46,43 @@ public class TestBoard {
 
   }
 
+  @Test
+  public void testGameStopped(){
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.stop();
+
+    assertEquals(board.getIsRunning(),false);
+  }
+
+  @Test
+  public void testGameIsUpdating(){
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.update();
+
+    assertEquals(board.getUpdatingGame(), true);
+  }
 
 
 
