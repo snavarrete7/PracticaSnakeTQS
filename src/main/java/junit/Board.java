@@ -13,7 +13,7 @@ public class Board extends JPanel implements Runnable, KeyListener {
   private static final long serialVersionUID = 1L;
   public int WIDTH = 500, HEIGHT = 500;
   public Color color;
-  public boolean boardCreated;
+  public boolean boardDrawed;
   private boolean running, updatingSnake, updatingGame, firstSnake, createNewApple, isOut, right = true, left = false, up = false, down = false;
   private Thread thread;
   private SnakePart s;
@@ -74,6 +74,32 @@ public class Board extends JPanel implements Runnable, KeyListener {
     }
   }
 
+  public void paint(Graphics g) {
+    g.clearRect(0, 0, WIDTH, HEIGHT);
+
+    g.setColor(Color.BLACK);
+
+
+    g.fillRect(0, 0, WIDTH, HEIGHT);
+
+    for(int i = 0; i < WIDTH ; i++){
+      g.drawLine( i , 0 , i , HEIGHT);
+    }
+    for(int i = 0; i < WIDTH ; i++){
+      g.drawLine( i , 0 , i , HEIGHT);
+    }
+
+    for(int i = 0; i < snake.size() ; i++){
+      snake.get(i).draw(g);
+    }
+
+
+    for(int i = 0; i < apples.size(); i++) {
+      apples.get(i).draw(g);
+    }
+
+    boardDrawed = true;
+  }
 
 
 public void update(){
