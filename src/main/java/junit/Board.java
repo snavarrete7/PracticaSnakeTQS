@@ -14,7 +14,7 @@ public class Board extends JPanel implements Runnable, KeyListener {
   public int WIDTH = 500, HEIGHT = 500;
   public Color color;
   public boolean boardDrawed;
-  private boolean running, updatingSnake, updatingGame, firstSnake, createNewApple, isOut, right = true, left = false, up = false, down = false;
+  public boolean running, updatingSnake, updatingGame, firstSnake, createNewApple, isOut, right = true, left = false, up = false, down = false;
   private Thread thread;
   private SnakePart s;
   private ArrayList<SnakePart> snake;
@@ -112,9 +112,31 @@ public void update(){
   }
   ticks++;
 
-
+  updateSnake(right,left,down,up);
 
 }
+
+  public void updateSnake(boolean right, boolean left, boolean down, boolean up){
+
+    if(ticks > miliseconds) {    //cada x milisegundos se actualiza, tambien sirve para medir la velocidad de la snake
+      if (right) xCordSnake++;
+      if (left) xCordSnake--;
+      if (up) yCordSnake--;
+      if (down) yCordSnake++;
+
+      ticks = 0;
+
+      s = new SnakePart(xCordSnake, yCordSnake, 10);  ///añadir la parte del snake a la nueva posicion
+      snake.add(s);
+
+      if (snake.size() > tileSize) {    ///eliminar la ultima snakePart para seguir manteniendo los mismos snakeParts
+        snake.remove(0);
+      }
+      //updatingSnake = true;
+
+    }
+
+  }
 
   @Override
   public void keyTyped(KeyEvent e) {
