@@ -37,6 +37,31 @@ public class Board extends JPanel implements Runnable, KeyListener {
 
   }
 
+  @Override
+  public void run() {
+    while(running) {
+      update();
+      repaint();
+    }
+
+  }
+
+  public void start(){
+    running = true;
+    thread = new Thread(this);
+    thread.start();
+  }
+
+  public void stop(){
+    running=false;
+    //parar el thread
+    try {
+      thread.join();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
+
 
 
 }
