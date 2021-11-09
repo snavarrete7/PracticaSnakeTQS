@@ -131,6 +131,12 @@ public void update(){
 
   updateSnake(right,left,down,up);
 
+  boolean applesInBoard =comproveApplesInBoard();
+
+  if(applesInBoard == true){
+
+    //TODO
+  }
 
   updatingGame = true;
 }
@@ -155,6 +161,18 @@ public void update(){
 
     }
 
+  }
+
+  public boolean comproveApplesInBoard(){
+
+    if(apples.size() == 0){   //si no hay ninguna manzana en el tablero te crea una random y la añade al array para printearla
+
+      Apple apple = new Apple();
+      apples.add(apple);
+      createNewApple = true;
+    }
+
+    return createNewApple;
   }
 
   @Override
