@@ -23,6 +23,17 @@ public class Board extends JPanel implements Runnable, KeyListener {
 
   public int xCordSnake = 10, yCordSnake = 10, tileSize = 5, ticks = 0, miliseconds = 550000;
 
+  public int getWidth(){return WIDTH;}
+  public int getHeight(){return HEIGHT;}
+  public boolean getIsRunning(){ return running;}
+  public ArrayList<Apple> getApples(){ return apples;}
+  public ArrayList<SnakePart> getSnake(){ return snake;}
+  public void setIsRunning(boolean run){running= run;}
+  public void setxCordSnake(int cord){xCordSnake =cord;}
+  public void setyCordSnake(int cord){yCordSnake =cord;}
+  public int getxCordSnake(){return xCordSnake;}
+  public int getyCordSnake(){return yCordSnake;}
+
 
   public Board(){
 
