@@ -145,6 +145,56 @@ public void update(){
 
   @Override
   public void keyPressed(KeyEvent e) {
+    int key = e.getKeyCode();
+    if(key == KeyEvent.VK_RIGHT && !left){
+      right = true;
+      up = false;
+      down = false;
+    }
+
+    if(key == KeyEvent.VK_LEFT && !right){
+      left = true;
+      up = false;
+      down = false;
+    }
+
+    if(key == KeyEvent.VK_UP && !down){
+      left = false;
+      up = true;
+      right = false;
+    }
+
+    if(key == KeyEvent.VK_DOWN && !up){
+      down = true;
+      left = false;
+      right = false;
+    }
+
+    if(key == KeyEvent.VK_D && !left){
+      right = true;
+      up = false;
+      down = false;
+    }
+
+    if(key == KeyEvent.VK_A && !right){
+      left = true;
+      up = false;
+      down = false;
+    }
+
+    if(key == KeyEvent.VK_W && !down){
+      left = false;
+      up = true;
+      right = false;
+    }
+
+    if(key == KeyEvent.VK_S && !up){
+      down = true;
+      left = false;
+      right = false;
+    }
+
+
 
   }
 
