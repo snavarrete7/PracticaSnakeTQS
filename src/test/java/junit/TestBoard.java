@@ -120,6 +120,91 @@ public class TestBoard {
   }
 
 
+  @Test
+  public void testSnakeUpdatesMovementToRight(){
+
+    Board board = new Board();
+    board.right = true;
+    board.left = false;
+    board.down = false;
+    board.up = false;
+
+    board.ticks = board.miliseconds + 10000;
+    board.updateSnake(board.right,board.left,board.down,board.up);
+
+    int xCordSnake = board.getxCordSnake();
+    int yCordSnake = board.getyCordSnake();
+
+    assertEquals(11,xCordSnake);
+    assertEquals(10,yCordSnake);
+
+  }
+
+
+  @Test
+  public void testSnakeUpdatesMovementToLeft(){
+
+    Board board = new Board();
+    board.right = false;
+    board.left = true;
+    board.down = false;
+    board.up = false;
+
+    board.ticks = board.miliseconds + 10000;
+    board.updateSnake(board.right,board.left,board.down,board.up);
+
+    int xCordSnake = board.getxCordSnake();
+    int yCordSnake = board.getyCordSnake();
+
+    assertEquals(9,xCordSnake);
+    assertEquals(10,yCordSnake);
+
+  }
+
+
+  @Test
+  public void testSnakeUpdatesMovementToDown(){
+
+    Board board = new Board();
+
+    board.right = false;
+    board.left = false;
+    board.down = true;
+    board.up = false;
+
+    board.ticks = board.miliseconds + 10000;
+    board.updateSnake(board.right,board.left,board.down,board.up);
+
+    int xCordSnake = board.getxCordSnake();
+    int yCordSnake = board.getyCordSnake();
+
+    assertEquals(10,xCordSnake);
+    assertEquals(11,yCordSnake);
+
+  }
+
+
+  @Test
+  public void testSnakeUpdatesMovementToUp(){
+
+    Board board = new Board();
+
+    board.right = false;
+    board.left = false;
+    board.down = false;
+    board.up = true;
+
+    board.ticks = board.miliseconds + 10000;
+    board.updateSnake(board.right,board.left,board.down,board.up);
+
+    int xCordSnake = board.getxCordSnake();
+    int yCordSnake = board.getyCordSnake();
+
+    assertEquals(10,xCordSnake);
+    assertEquals(9,yCordSnake);
+
+  }
+
 
 }
 
