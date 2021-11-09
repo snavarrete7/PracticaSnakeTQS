@@ -27,7 +27,24 @@ public class TestBoard {
   }
 
 
+  @Test
+  public void testGameIsRunning(){
 
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+    board.start();
+    assertEquals(board.getIsRunning(), true);
+
+  }
 
 
 
