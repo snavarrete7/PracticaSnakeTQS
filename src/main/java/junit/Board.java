@@ -33,6 +33,7 @@ public class Board extends JPanel implements Runnable, KeyListener {
   public void setyCordSnake(int cord){yCordSnake =cord;}
   public int getxCordSnake(){return xCordSnake;}
   public int getyCordSnake(){return yCordSnake;}
+  public boolean getUpdatingGame() { return updatingGame;}
 
 
   public Board(){
@@ -63,6 +64,15 @@ public class Board extends JPanel implements Runnable, KeyListener {
     thread.start();
   }
 
+  public void stop(){
+    running=false;
+    //parar el thread
+    try {
+      thread.join();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+  }
 
 public void update(){
 
