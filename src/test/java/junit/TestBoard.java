@@ -38,6 +38,7 @@ public class TestBoard {
     window.setVisible(true);
 
     board.run();
+    boolean resultat = board.boardDraw;
     assertEquals(true, board.boardDraw);
 
   }
@@ -202,6 +203,49 @@ public class TestBoard {
 
     assertEquals(10,xCordSnake);
     assertEquals(9,yCordSnake);
+
+  }
+
+  @Test
+  public void testComproveApplesInBoardReturnTrue(){
+
+
+    JFrame window = new JFrame();
+    Board board = new Board();
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+    window.pack();
+    window.setVisible(true);
+
+    boolean resultat = board.comproveApplesInBoard();
+
+    assertEquals(true,resultat);
+
+  }
+
+  @Test
+  public void testComproveApplesInBoardReturnFalse(){
+
+    JFrame window = new JFrame();
+    Board board = new Board();
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+    window.pack();
+    window.setVisible(true);
+
+    board.setCreateNewApple(false);
+    for(int i=0;i<5;i++){
+      Apple apple = new Apple();
+      board.getApples().add(apple);
+    }
+
+    boolean resultat = board.comproveApplesInBoard();
+
+    assertEquals(false,resultat);
 
   }
 

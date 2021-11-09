@@ -131,6 +131,8 @@ public void update(){
 
   updateSnake(right,left,down,up);
 
+
+  updatingGame = true;
 }
 
   public void updateSnake(boolean right, boolean left, boolean down, boolean up){
