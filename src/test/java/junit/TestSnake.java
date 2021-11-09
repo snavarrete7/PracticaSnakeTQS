@@ -1,6 +1,9 @@
 package junit;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import javax.swing.*;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,5 +38,23 @@ public class TestSnake{
 
   }
 
+  @Test
+  public void TestSnakeDraw(){
+    JFrame window = new JFrame();
+    Board board = new Board();
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+    window.pack();
+    window.setVisible(true);
+
+
+    board.run();
+
+    assertEquals(true, board.getSnake().get(0).snakeDraw);
+
+
+  }
 
 }
