@@ -63,15 +63,6 @@ public class Board extends JPanel implements Runnable, KeyListener {
     thread.start();
   }
 
-  public void stop(){
-    running=false;
-    //parar el thread
-    try {
-      thread.join();
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-  }
 
 public void update(){
 
