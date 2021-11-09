@@ -48,8 +48,8 @@ public class TestApple {
     window.setVisible(true);
 
     board.run();
-
-    assertEquals(true, board.getApples().get(0).appleDraw);
+    boolean appleDraw = board.getApples().get(0).appleDraw;
+    assertEquals(true, appleDraw);
   }
 
 

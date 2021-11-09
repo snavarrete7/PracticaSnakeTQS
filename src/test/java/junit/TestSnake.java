@@ -51,8 +51,8 @@ public class TestSnake{
 
 
     board.run();
-
-    assertEquals(true, board.getSnake().get(0).snakeDraw);
+    boolean snakeDrawed = board.getSnake().get(0).snakeDraw;
+    assertEquals(true, snakeDrawed);
 
 
   }
