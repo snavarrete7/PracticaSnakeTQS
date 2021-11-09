@@ -53,6 +53,15 @@ public class Board extends JPanel implements Runnable, KeyListener {
   public int getTileSize(){return tileSize;}
   public void setCreateNewApple(boolean var){createNewApple=var;}
 
+  @Override
+  public void run() {
+    while(running) {
+      update();
+      repaint();
+    }
+
+  }
+
 
   public Board(){
 
@@ -67,36 +76,11 @@ public class Board extends JPanel implements Runnable, KeyListener {
 
   }
 
-  @Override
-  public void run() {
-    while(running) {
-      update();
-      repaint();
-    }
-
-  }
-
-  public void start(){
-    running = true;
-    thread = new Thread(this);
-    thread.start();
-  }
-
-  public void stop(){
-    running=false;
-    //parar el thread
-    try {
-      thread.join();
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-  }
-
   public void paint(Graphics g) {
     g.clearRect(0, 0, WIDTH, HEIGHT);
 
     g.setColor(Color.BLACK);
-
+    setColor(Color.BLACK);
 
     g.fillRect(0, 0, WIDTH, HEIGHT);
 
@@ -117,6 +101,24 @@ public class Board extends JPanel implements Runnable, KeyListener {
     }
 
     boardDraw = true;
+  }
+
+
+
+  public void start(){
+    running = true;
+    thread = new Thread(this);
+    thread.start();
+  }
+
+  public void stop(){
+    running=false;
+    //parar el thread
+    try {
+      thread.join();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
   }
 
 

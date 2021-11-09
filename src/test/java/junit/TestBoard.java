@@ -38,7 +38,7 @@ public class TestBoard {
     window.setVisible(true);
 
     board.run();
-    boolean resultat = board.boardDraw;
+
     assertEquals(true, board.boardDraw);
 
   }
