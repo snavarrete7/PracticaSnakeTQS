@@ -4,9 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 
 public class TestSnake{
@@ -55,6 +54,56 @@ public class TestSnake{
     assertEquals(true, snakeDrawed);
 
 
+  }
+
+  @Test
+  public void TestSnakeMovement(){
+    JFrame window = new JFrame();
+    Board board = new Board();
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+    window.pack();
+    window.setVisible(true);
+
+    while(board.getxCordSnake()== 10 && board.getyCordSnake()== 10){
+      board.update();
+    }
+
+    int xCordSnake = board.getxCordSnake();
+    int yCordSnake = board.getxCordSnake();
+
+    assertNotEquals(10,xCordSnake);
+    assertNotEquals(10,yCordSnake);
+  }
+
+  @Test
+  public void testSnakeStartsMovingOnRight(){
+    JFrame window = new JFrame();
+    Board board = new Board();
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+    window.pack();
+    window.setVisible(true);
+
+    boolean snakeMovesRight = false;
+
+    while(board.getxCordSnake()== 10 && board.getyCordSnake()== 10){
+      board.update();
+    }
+
+
+    int xCordSnake = board.getxCordSnake();
+    int yCordSnake = board.getxCordSnake();
+
+    if(xCordSnake > 10 && yCordSnake > 10){
+      snakeMovesRight = true;
+    }
+
+    assertEquals(true,snakeMovesRight);
   }
 
 }
