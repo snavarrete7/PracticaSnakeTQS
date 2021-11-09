@@ -74,6 +74,8 @@ public class Board extends JPanel implements Runnable, KeyListener {
     }
   }
 
+
+
 public void update(){
 
 }
