@@ -34,6 +34,7 @@ public class Board extends JPanel implements Runnable, KeyListener {
   public int getxCordSnake(){return xCordSnake;}
   public int getyCordSnake(){return yCordSnake;}
   public boolean getUpdatingGame() { return updatingGame;}
+  public boolean getFirstSnake() { return firstSnake;}
 
 
   public Board(){
@@ -103,6 +104,13 @@ public class Board extends JPanel implements Runnable, KeyListener {
 
 
 public void update(){
+
+  if(snake.size() == 0){
+    s = new SnakePart(xCordSnake, yCordSnake, 10);
+    snake.add(s);
+    firstSnake = true;
+  }
+  ticks++;
 
 }
 
