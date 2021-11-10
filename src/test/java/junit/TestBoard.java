@@ -272,6 +272,221 @@ public class TestBoard {
 
   }
 
+  //Tests valors limits del 1 al 10
+  @Test
+  public void testIsOut1(){
+
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.setxCordSnake(50);
+    board.setyCordSnake(50);
+    board.start();
+    board.update();
+    assertEquals(board.getIsRunning(),false);
+  }
+
+  @Test
+  public void testIsOut2(){
+
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.setxCordSnake(49);
+    board.setyCordSnake(49);
+    board.start();
+    board.update();
+    assertEquals(board.getIsRunning(),true);
+  }
+
+  @Test
+  public void testIsOut3(){
+
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.setxCordSnake(0);
+    board.setyCordSnake(0);
+    board.start();
+    board.update();
+    assertEquals(board.getIsRunning(),true);
+  }
+
+  @Test
+  public void testIsOut4(){
+
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.setxCordSnake(-1);
+    board.setyCordSnake(-1);
+    board.start();
+    board.update();
+    assertEquals(board.getIsRunning(),false);
+  }
+  @Test
+  public void testIsOut5(){
+
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.setxCordSnake(20);
+    board.setyCordSnake(20);
+    board.start();
+    board.update();
+    assertEquals(board.getIsRunning(),true);
+  }
+  @Test
+  public void testIsOut6(){
+
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.setxCordSnake(35);
+    board.setyCordSnake(35);
+    board.start();
+    board.update();
+    assertEquals(board.getIsRunning(),true);
+  }
+  @Test
+  public void testIsOut7(){
+
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.setxCordSnake(1);
+    board.setyCordSnake(1);
+    board.start();
+    board.update();
+    assertEquals(board.getIsRunning(),true);
+  }
+  @Test
+  public void testIsOut8(){
+
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.setxCordSnake(48);
+    board.setyCordSnake(48);
+    board.start();
+    board.update();
+    assertEquals(board.getIsRunning(),true);
+  }
+  @Test
+  public void testIsOut9(){
+
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.setxCordSnake(-100);
+    board.setyCordSnake(-100);
+    board.start();
+    board.update();
+    assertEquals(board.getIsRunning(),false);
+  }
+  @Test
+  public void testIsOut10(){
+
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.setxCordSnake(100);
+    board.setyCordSnake(100);
+    board.start();
+    board.update();
+    assertEquals(board.getIsRunning(),false);
+  }
+
 
 }
 
