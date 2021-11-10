@@ -249,6 +249,29 @@ public class TestBoard {
 
   }
 
+  @Test
+  public void testIsIn(){
+
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.setxCordSnake(1);
+    board.setyCordSnake(1);
+    board.start();
+    board.update();
+    assertEquals(board.getIsRunning(),true);
+
+  }
+
 
 }
 
