@@ -140,6 +140,12 @@ public void update(){
     //TODO
   }
 
+  if(xCordSnake < 0 || xCordSnake > 49 || yCordSnake < 0 || yCordSnake > 49){
+    //isOut = true;
+    stop();
+
+  }
+
   updatingGame = true;
 }
 
