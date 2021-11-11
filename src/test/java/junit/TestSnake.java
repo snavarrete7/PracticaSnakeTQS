@@ -11,21 +11,21 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 public class TestSnake{
 
   @Test
-  public void TestSnakeCreationNotNull() {
+  public void testSnakeCreationNotNull() {
 
     assertNotNull(new SnakePart());
 
   }
 
   @Test
-  public void TestSnakeCreationWithArguments(){
+  public void testSnakeCreationWithArguments(){
 
     assertNotNull(new SnakePart(10,10,10).createSnake());
   }
 
 
   @Test
-  public void TestSnakeAtributes(){
+  public void testSnakeAtributes(){
     int xCord = 10;
     int yCord = 10;
     int tileSize = 20;
@@ -38,7 +38,7 @@ public class TestSnake{
   }
 
   @Test
-  public void TestSnakeDraw(){
+  public void testSnakeDraw(){
     JFrame window = new JFrame();
     Board board = new Board();
     window.add(board);
@@ -57,7 +57,7 @@ public class TestSnake{
   }
 
   @Test
-  public void TestSnakeMovement(){
+  public void testSnakeMovement(){
     JFrame window = new JFrame();
     Board board = new Board();
     window.add(board);

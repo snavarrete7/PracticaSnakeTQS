@@ -616,6 +616,28 @@ public class TestBoard {
 
   }
 
+  @Test
+  public void testIncrementPutuation(){
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    int initialPuntuation = board.puntuation;
+    board.grow();
+    int finalPuntuation = board.puntuation;
+
+    assertNotEquals(initialPuntuation,finalPuntuation);
+
+  }
+
+
 
 }
 

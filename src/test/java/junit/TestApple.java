@@ -10,20 +10,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestApple {
   @Test
-  public void TestAppleCreationNotNull() {
+  public void testAppleCreationNotNull() {
     assertNotNull(new Apple());
 
   }
 
   @Test
-  public void TestAppleCreationWithArgument(){
+  public void testAppleCreationWithArgument(){
     assertNotNull(new Apple(10,10,10).createApple());
 
 
   }
 
   @Test
-  public void TestAppleAtributes() {
+  public void testAppleAtributes() {
     int xCord = 20;
     int yCord = 20;
     int tileSize = 15;
@@ -37,7 +37,7 @@ public class TestApple {
 
 
   @Test
-  public void TestAppleDraw(){
+  public void testAppleDraw(){
     JFrame window = new JFrame();
     Board board = new Board();
     window.add(board);
