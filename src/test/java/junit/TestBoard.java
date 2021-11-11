@@ -3,11 +3,11 @@ import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class TestBoard {
 
@@ -25,7 +25,7 @@ public class TestBoard {
     assertEquals(new Board().getWidth(), 500);
 
   }
-
+/*
   @Test
   public void testBoardDraw(){
     JFrame window = new JFrame();
@@ -41,7 +41,7 @@ public class TestBoard {
 
     assertEquals(true, board.boardDraw);
 
-  }
+  }*/
 
   @Test
   public void testGameIsRunning(){
@@ -485,6 +485,58 @@ public class TestBoard {
     board.start();
     board.update();
     assertEquals(board.getIsRunning(),false);
+  }
+
+  @Test
+  public void testSnakeGrows(){
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    int initialSize = board.getTileSize();
+    board.grow();
+    assertNotEquals(initialSize, board.getTileSize());
+
+  }
+
+  @Test
+  public void testAppleDisapearAndApearOnANewPositionWhenSnakeEats() throws IOException {
+
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+    window.pack();
+    window.setVisible(true);
+
+    board.start();
+    board.update();
+
+    ArrayList<Apple> apple = board.getApples();
+
+    apple.get(0).setyCord(10);
+    apple.get(0).setxCord(11);
+
+    board.grow();
+
+    int xNewCordApple = apple.get(0).getxCord();
+    int yNewCordApple = apple.get(0).getyCord();
+
+
+    assertNotEquals(11, xNewCordApple);
+    assertNotEquals(10, yNewCordApple);
+
   }
 
 
