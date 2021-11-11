@@ -1,5 +1,5 @@
 # PracticaSnakeTQS
-#INSTRUCCIONES
+INSTRUCCIONES
 
 1-Para poder cargar datos en la base de datos, JSON en este caso, debera seguir los siguientes pasos para descargarse la libreria correspondiente y poder permitir que todo funcione. Debera ir a File->Project Structure->Libraries->+(From Maven)->Buscar org.json:json:20210307->OK->Apply. Y esos serian los pasos a seguir para poder utilizar el JSON del proyecto.
 
