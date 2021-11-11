@@ -25,9 +25,9 @@ public class TestBoard {
     assertEquals(new Board().getWidth(), 500);
 
   }
-/*
+
   @Test
-  public void testBoardDraw(){
+  public void testBoardDraw() throws IOException {
     JFrame window = new JFrame();
     Board board = new Board();
     window.add(board);
@@ -41,7 +41,7 @@ public class TestBoard {
 
     assertEquals(true, board.boardDraw);
 
-  }*/
+  }
 
   @Test
   public void testGameIsRunning(){
@@ -636,6 +636,8 @@ public class TestBoard {
     assertNotEquals(initialPuntuation,finalPuntuation);
 
   }
+
+
 
 
 

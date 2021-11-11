@@ -19,7 +19,7 @@ public class Board extends JPanel implements Runnable, KeyListener {
   private static final long serialVersionUID = 1L;
   public int WIDTH = 500, HEIGHT = 500;
   public Color color;
-  public boolean boardDraw;
+  public boolean boardDraw = false;
   public int puntuation = 0;
   String username = "";
   public boolean running, updatingSnake, updatingGame, firstSnake, createNewApple = false, isOut, right = true, left = false, up = false, down = false;
