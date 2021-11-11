@@ -63,7 +63,7 @@ public class TestBoard {
   }
 
   @Test
-  public void testGameStopped(){
+  public void testGameStopped() throws IOException {
     JFrame window = new JFrame();
     Board board = new Board();
 
@@ -82,7 +82,7 @@ public class TestBoard {
   }
 
   @Test
-  public void testGameIsUpdating(){
+  public void testGameIsUpdating() throws IOException {
     JFrame window = new JFrame();
     Board board = new Board();
 
@@ -102,7 +102,7 @@ public class TestBoard {
 
 
   @Test
-  public void testFirstSnake(){
+  public void testFirstSnake() throws IOException {
     JFrame window = new JFrame();
     Board board = new Board();
 
@@ -250,7 +250,7 @@ public class TestBoard {
   }
 
   @Test
-  public void testIsIn(){
+  public void testIsIn() throws IOException {
 
     JFrame window = new JFrame();
     Board board = new Board();
@@ -274,7 +274,7 @@ public class TestBoard {
 
   //Tests valors limits del 1 al 10
   @Test
-  public void testIsOut1(){
+  public void testIsOut1() throws IOException {
 
     JFrame window = new JFrame();
     Board board = new Board();
@@ -296,7 +296,7 @@ public class TestBoard {
   }
 
   @Test
-  public void testIsOut2(){
+  public void testIsOut2() throws IOException {
 
     JFrame window = new JFrame();
     Board board = new Board();
@@ -318,7 +318,7 @@ public class TestBoard {
   }
 
   @Test
-  public void testIsOut3(){
+  public void testIsOut3() throws IOException {
 
     JFrame window = new JFrame();
     Board board = new Board();
@@ -340,7 +340,7 @@ public class TestBoard {
   }
 
   @Test
-  public void testIsOut4(){
+  public void testIsOut4() throws IOException {
 
     JFrame window = new JFrame();
     Board board = new Board();
@@ -361,7 +361,7 @@ public class TestBoard {
     assertEquals(board.getIsRunning(),false);
   }
   @Test
-  public void testIsOut5(){
+  public void testIsOut5() throws IOException {
 
     JFrame window = new JFrame();
     Board board = new Board();
@@ -382,7 +382,7 @@ public class TestBoard {
     assertEquals(board.getIsRunning(),true);
   }
   @Test
-  public void testIsOut6(){
+  public void testIsOut6() throws IOException {
 
     JFrame window = new JFrame();
     Board board = new Board();
@@ -403,7 +403,7 @@ public class TestBoard {
     assertEquals(board.getIsRunning(),true);
   }
   @Test
-  public void testIsOut7(){
+  public void testIsOut7() throws IOException {
 
     JFrame window = new JFrame();
     Board board = new Board();
@@ -424,7 +424,7 @@ public class TestBoard {
     assertEquals(board.getIsRunning(),true);
   }
   @Test
-  public void testIsOut8(){
+  public void testIsOut8() throws IOException {
 
     JFrame window = new JFrame();
     Board board = new Board();
@@ -445,7 +445,7 @@ public class TestBoard {
     assertEquals(board.getIsRunning(),true);
   }
   @Test
-  public void testIsOut9(){
+  public void testIsOut9() throws IOException {
 
     JFrame window = new JFrame();
     Board board = new Board();
@@ -466,7 +466,7 @@ public class TestBoard {
     assertEquals(board.getIsRunning(),false);
   }
   @Test
-  public void testIsOut10(){
+  public void testIsOut10() throws IOException {
 
     JFrame window = new JFrame();
     Board board = new Board();
@@ -559,7 +559,7 @@ public class TestBoard {
   }
 
   @Test
-  public void testSnakeHitWithHimTrue(){
+  public void testSnakeHitWithHimTrue() throws IOException {
     JFrame window = new JFrame();
     Board board = new Board();
 
@@ -588,7 +588,7 @@ public class TestBoard {
   }
 
   @Test
-  public void testSnakeHitWithHimFalse(){
+  public void testSnakeHitWithHimFalse() throws IOException {
     JFrame window = new JFrame();
     Board board = new Board();
 

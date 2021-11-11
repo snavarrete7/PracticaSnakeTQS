@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -57,7 +59,7 @@ public class TestSnake{
   }
 
   @Test
-  public void testSnakeMovement(){
+  public void testSnakeMovement() throws IOException {
     JFrame window = new JFrame();
     Board board = new Board();
     window.add(board);
@@ -79,7 +81,7 @@ public class TestSnake{
   }
 
   @Test
-  public void testSnakeStartsMovingOnRight(){
+  public void testSnakeStartsMovingOnRight() throws IOException {
     JFrame window = new JFrame();
     Board board = new Board();
     window.add(board);

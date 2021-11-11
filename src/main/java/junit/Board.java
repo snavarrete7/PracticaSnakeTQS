@@ -1,8 +1,14 @@
 package junit;
 
+import org.json.JSONObject;
+
 import java.awt.*;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JPanel;
@@ -15,6 +21,7 @@ public class Board extends JPanel implements Runnable, KeyListener {
   public Color color;
   public boolean boardDraw;
   public int puntuation = 0;
+  String username = "";
   public boolean running, updatingSnake, updatingGame, firstSnake, createNewApple = false, isOut, right = true, left = false, up = false, down = false;
   private Thread thread;
   private SnakePart s;
@@ -22,7 +29,7 @@ public class Board extends JPanel implements Runnable, KeyListener {
   private ArrayList<Apple> apples;
   private Random r = new Random();
 
-  public int xCordSnake = 10, yCordSnake = 10, tileSize = 5, ticks = 0, miliseconds = 550000;
+  public int xCordSnake = 10, yCordSnake = 10, tileSize = 5, ticks = 0, miliseconds = 650000;
 
   public int getWidth(){return WIDTH;}
   public int getHeight(){return HEIGHT;}
@@ -56,7 +63,11 @@ public class Board extends JPanel implements Runnable, KeyListener {
   @Override
   public void run() {
     while(running) {
-      update();
+      try {
+        update();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
       repaint();
     }
 
@@ -109,8 +120,9 @@ public class Board extends JPanel implements Runnable, KeyListener {
     thread.start();
   }
 
-  public void stop(){
+  public void stop() throws IOException {
     running=false;
+    saveJSON(username,puntuation);
     //parar el thread
     try {
       thread.join();
@@ -120,7 +132,7 @@ public class Board extends JPanel implements Runnable, KeyListener {
   }
 
 
-public void update(){
+public void update() throws IOException {
 
   if(snake.size() == 0){
     s = new SnakePart(xCordSnake, yCordSnake, 10);
@@ -211,11 +223,32 @@ public void update(){
     return hit;
   }
 
-
-  @Override
-  public void keyTyped(KeyEvent e) {
-
+  public JSONObject readJSON(){
+    String info = "";
+    try {
+      BufferedReader file = new BufferedReader(new FileReader("database.json"));
+      info = file.readLine();
+      file.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    JSONObject json = new JSONObject(info);
+    return json;
   }
+
+  public void saveJSON(String username, int puntuacio) throws IOException {
+
+    JSONObject json = readJSON();
+    if(json.isNull(username)){
+      json.put(username,puntuacio);
+    }else if((int)json.get(username) < puntuacio){
+      json.put(username,puntuacio);
+    }
+    FileWriter file = new FileWriter("database.json");
+    file.write(json.toString());
+    file.flush();
+  }
+
 
   @Override
   public void keyPressed(KeyEvent e) {
@@ -269,6 +302,11 @@ public void update(){
     }
 
 
+
+  }
+
+  @Override
+  public void keyTyped(KeyEvent e) {
 
   }
 
