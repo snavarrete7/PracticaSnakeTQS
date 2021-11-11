@@ -1,4 +1,5 @@
 package junit;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
@@ -637,7 +638,28 @@ public class TestBoard {
 
   }
 
+  @Test
+  public void testJSON() throws IOException {
 
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.username = "Test";
+    board.puntuation = 10;
+    JSONObject json = board.readJSON();
+    board.saveJSON(board.username,board.puntuation);
+    int testPuntuation = (int)json.get(board.username);
+    assertEquals(board.puntuation, testPuntuation);
+
+  }
 
 
 

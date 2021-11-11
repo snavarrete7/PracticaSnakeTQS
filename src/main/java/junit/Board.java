@@ -29,7 +29,7 @@ public class Board extends JPanel implements Runnable, KeyListener {
   private ArrayList<Apple> apples;
   private Random r = new Random();
 
-  public int xCordSnake = 10, yCordSnake = 10, tileSize = 5, ticks = 0, miliseconds = 650000;
+  public int xCordSnake = 10, yCordSnake = 10, tileSize = 5, ticks = 0, miliseconds = 750000;
 
   public int getWidth(){return WIDTH;}
   public int getHeight(){return HEIGHT;}
