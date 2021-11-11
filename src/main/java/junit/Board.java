@@ -136,8 +136,7 @@ public void update(){
   boolean applesInBoard =comproveApplesInBoard();
 
   if(applesInBoard == true){
-
-    //TODO
+    eat(xCordSnake,yCordSnake);
   }
 
   if(xCordSnake < 0 || xCordSnake > 49 || yCordSnake < 0 || yCordSnake > 49){
@@ -182,6 +181,24 @@ public void update(){
 
     return createNewApple;
   }
+
+  public void eat(int xCordSnake, int yCordSnake){
+    for (int i=0; i< apples.size();i++){
+      if(snake.get(snake.size() - 1).getXCord() == apples.get(i).getxCord() && snake.get(snake.size()-1).getYCord() == apples.get(i).getyCord())
+        grow();
+    }
+  }
+
+  public void grow(){
+    tileSize++;
+    miliseconds = miliseconds + 5000;
+    apples.remove(0);
+    Apple apple = new Apple();
+    apples.add(apple);
+  }
+
+
+
 
   @Override
   public void keyTyped(KeyEvent e) {
