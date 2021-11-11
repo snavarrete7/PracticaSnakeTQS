@@ -539,6 +539,83 @@ public class TestBoard {
 
   }
 
+  @Test
+  public void testCreateNewAppleWhenGameStart() throws IOException {
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.update();
+
+    assertEquals(board.getCreateNewApple(),true);
+  }
+
+  @Test
+  public void testSnakeHitWithHimTrue(){
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.update();
+    ArrayList<SnakePart> snake = board.getSnake();
+
+    while(snake.size() < 2){
+      board.update();
+    }
+    snake.get(0).xCord = 12;
+    snake.get(0).yCord = 12;
+    board.xCordSnake = 12;
+    board.yCordSnake = 12;
+    boolean resultat = board.snakeHitWithHim();
+
+    assertEquals(true,resultat);
+
+  }
+
+  @Test
+  public void testSnakeHitWithHimFalse(){
+    JFrame window = new JFrame();
+    Board board = new Board();
+
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+
+    window.pack();
+    window.setVisible(true);
+
+    board.update();
+    ArrayList<SnakePart> snake = board.getSnake();
+
+    while(snake.size() < 2){
+      board.update();
+    }
+    snake.get(0).xCord = 20;
+    snake.get(0).yCord = 20;
+    board.xCordSnake = 12;
+    board.yCordSnake = 12;
+    boolean resultat = board.snakeHitWithHim();
+
+    assertEquals(false,resultat);
+
+  }
+
 
 }
 
