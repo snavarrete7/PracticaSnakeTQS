@@ -14,7 +14,7 @@ public class Board extends JPanel implements Runnable, KeyListener {
   public int WIDTH = 500, HEIGHT = 500;
   public Color color;
   public boolean boardDraw;
-
+  public int puntuation = 0;
   public boolean running, updatingSnake, updatingGame, firstSnake, createNewApple = false, isOut, right = true, left = false, up = false, down = false;
   private Thread thread;
   private SnakePart s;
@@ -99,11 +99,9 @@ public class Board extends JPanel implements Runnable, KeyListener {
     for(int i = 0; i < apples.size(); i++) {
       apples.get(i).draw(g);
     }
-
+    g.drawString("Puntuacio " + puntuation, 420,12);
     boardDraw = true;
   }
-
-
 
   public void start(){
     running = true;
@@ -193,6 +191,7 @@ public void update(){
 
   public void grow(){
     tileSize++;
+    puntuation++;
     miliseconds = miliseconds + 5000;
     apples.remove(0);
     Apple apple = new Apple();
