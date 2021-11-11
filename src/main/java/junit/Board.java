@@ -140,9 +140,11 @@ public void update(){
   }
 
   if(xCordSnake < 0 || xCordSnake > 49 || yCordSnake < 0 || yCordSnake > 49){
-    //isOut = true;
     stop();
+  }
 
+  if(snakeHitWithHim()==true){
+    stop();
   }
 
   updatingGame = true;
@@ -198,6 +200,17 @@ public void update(){
   }
 
 
+  public boolean snakeHitWithHim(){
+    boolean hit = false;
+    for (int i = 0; i < snake.size(); i++){
+      if(xCordSnake == snake.get(i).getXCord() && yCordSnake == snake.get(i).getYCord()){
+        if(i != snake.size() -1 ){  //comprovar que no acaba de empezar la partida, sino pararia justo al empezar
+          hit = true;
+        }
+      }
+    }
+    return hit;
+  }
 
 
   @Override
