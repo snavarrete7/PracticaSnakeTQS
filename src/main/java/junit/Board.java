@@ -33,17 +33,11 @@ public class Board extends JPanel implements Runnable, KeyListener {
 
   public int getWidth(){return WIDTH;}
   public int getHeight(){return HEIGHT;}
-
-  public boolean getBoardDrawed(){return boardDraw;}
-  public boolean getUpdatingSnake() { return updatingSnake;}
+  boolean applesInBoard = false;
   public boolean getUpdatingGame() { return updatingGame;}
   public boolean getFirstSnake() { return firstSnake;}
   public boolean getCreateNewApple() { return createNewApple;}
-  public boolean getIsOut() { return isOut;}
 
-  public Color getColor() {
-    return color;
-  }
   public void setColor(Color c){ color=c;}
 
   public boolean getIsRunning(){ return running;}
@@ -51,12 +45,12 @@ public class Board extends JPanel implements Runnable, KeyListener {
   public ArrayList<Apple> getApples(){ return apples;}
   public ArrayList<SnakePart> getSnake(){ return snake;}
 
-  public void setIsRunning(boolean run){running= run;}
+
   public void setxCordSnake(int cord){xCordSnake =cord;}
   public void setyCordSnake(int cord){yCordSnake =cord;}
   public int getxCordSnake(){return xCordSnake;}
   public int getyCordSnake(){return yCordSnake;}
-  public Thread getThread(){return thread;}
+
   public int getTileSize(){return tileSize;}
   public void setCreateNewApple(boolean var){createNewApple=var;}
 
@@ -144,7 +138,7 @@ public void update() throws IOException {
 
   updateSnake(right,left,down,up);
 
-  boolean applesInBoard =comproveApplesInBoard();
+  applesInBoard =comproveApplesInBoard();
 
   if(applesInBoard == true){
     eat();
@@ -163,6 +157,7 @@ public void update() throws IOException {
 
   public void updateSnake(boolean right, boolean left, boolean down, boolean up){
 
+    boolean snakeUpdated = false;
     if(ticks > miliseconds) {    //cada x milisegundos se actualiza, tambien sirve para medir la velocidad de la snake
       if (right) xCordSnake++;
       if (left) xCordSnake--;
@@ -176,6 +171,7 @@ public void update() throws IOException {
 
       if (snake.size() > tileSize) {    ///eliminar la ultima snakePart para seguir manteniendo los mismos snakeParts
         snake.remove(0);
+        // snakeUpdated = true;
       }
       //updatingSnake = true;
 

@@ -52,4 +52,10 @@ public class TestApple {
     assertEquals(true, appleDraw);
   }
 
+  @Test
+  public void testAppleCreationNotNullRandom() {
+    assertNotNull(new Apple(new RandomNumber()));
+
+  }
+
 }

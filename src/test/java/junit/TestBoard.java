@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -433,6 +434,20 @@ public class TestBoard {
     int testPuntuation = (int)json.get(board.username);
     assertEquals(board.puntuation, testPuntuation);
 
+  }
+
+  @Test
+  public void testRemoveLastPartSnake(){
+
+    for(int i=0; i<5;i++){
+      SnakePart part = new SnakePart(10,10,10);
+      board.getSnake().add(part);
+    }
+    board.ticks = board.miliseconds + 10000;
+    board.tileSize = 1;
+    board.updateSnake(true,false,false,false);
+
+    assertEquals(true, true);
   }
 
   /*

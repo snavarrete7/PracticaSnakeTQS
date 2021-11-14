@@ -23,6 +23,7 @@ public class TestSnake{
   public void testSnakeCreationWithArguments(){
 
     assertNotNull(new SnakePart(10,10,10).createSnake());
+
   }
 
 
@@ -36,7 +37,6 @@ public class TestSnake{
     assertEquals((new SnakePart(xCord,yCord,tileSize).createSnake()).getYCord(), yCord);
     assertEquals((new SnakePart(xCord,yCord,tileSize).createSnake()).getWidth(), tileSize);
     assertEquals((new SnakePart(xCord,yCord,tileSize).createSnake()).getHeight(), tileSize);
-
   }
 
   @Test
