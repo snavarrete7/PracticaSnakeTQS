@@ -146,7 +146,7 @@ public void update() throws IOException {
   boolean applesInBoard =comproveApplesInBoard();
 
   if(applesInBoard == true){
-    eat(xCordSnake,yCordSnake);
+    eat();
   }
 
   if(xCordSnake < 0 || xCordSnake > 49 || yCordSnake < 0 || yCordSnake > 49){
@@ -194,7 +194,7 @@ public void update() throws IOException {
     return createNewApple;
   }
 
-  public void eat(int xCordSnake, int yCordSnake){
+  public void eat(){
     for (int i=0; i< apples.size();i++){
       if(snake.get(snake.size() - 1).getXCord() == apples.get(i).getxCord() && snake.get(snake.size()-1).getYCord() == apples.get(i).getyCord())
         grow();
@@ -204,8 +204,10 @@ public void update() throws IOException {
   public void grow(){
     tileSize++;
     puntuation++;
-    miliseconds = miliseconds + 50000;
-    apples.remove(0);
+    miliseconds = miliseconds + 5000;
+    if(apples.size() != 0){
+      apples.remove(0);
+    }
     Apple apple = new Apple();
     apples.add(apple);
   }

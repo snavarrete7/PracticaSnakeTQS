@@ -52,5 +52,4 @@ public class TestApple {
     assertEquals(true, appleDraw);
   }
 
-
 }

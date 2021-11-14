@@ -9,6 +9,7 @@ public class Apple {
   public int width;
   public int height;
   public boolean appleDraw;
+  RandomNumber rand;
 
   public Apple(){
     Random rand = new Random(System.currentTimeMillis());
@@ -27,6 +28,18 @@ public class Apple {
     this.width = size;
     this.height = size;
   }
+
+  public Apple(RandomNumber randObject){
+    this.rand = randObject;
+    double randX = calculateRandomApple(49);
+    double randY = calculateRandomApple(49);
+    this.xCord = (int) randX;
+    this.yCord =(int) randY;
+    this.width = 10;
+    this.height = 10;
+    appleDraw=false;
+  }
+
   public Apple createApple(){
 
     Apple apple= new Apple(xCord,yCord,width);
@@ -47,6 +60,11 @@ public class Apple {
     appleDraw = true;
   }
 
+  public double calculateRandomApple(int value){
+
+    return rand.calculateRandom(value);
+
+  }
 
 
 }

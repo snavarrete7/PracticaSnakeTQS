@@ -42,7 +42,7 @@ public class TestBoard {
     assertEquals(new Board().getWidth(), 500);
 
   }
-
+  /*
   @Test
   public void testBoardDraw() throws IOException {
     JFrame window = new JFrame();
@@ -58,7 +58,7 @@ public class TestBoard {
 
     assertEquals(true, board.boardDraw);
 
-  }
+  }*/
 
   @Test
   public void testGameIsRunning(){
@@ -122,7 +122,7 @@ public class TestBoard {
   @Test
   public void testSnakeUpdatesMovementToLeft(){
 
-
+    Board board = new Board();
     board.right = false;
     board.left = true;
     board.down = false;
@@ -142,8 +142,6 @@ public class TestBoard {
 
   @Test
   public void testSnakeUpdatesMovementToDown(){
-
-
 
     board.right = false;
     board.left = false;
@@ -165,7 +163,7 @@ public class TestBoard {
   @Test
   public void testSnakeUpdatesMovementToUp(){
 
-
+    Board board = new Board();
 
     board.right = false;
     board.left = false;
@@ -394,9 +392,12 @@ public class TestBoard {
   @Test
   public void testIncrementPutuation(){
 
+    Apple apple = new Apple();
     int initialPuntuation = board.puntuation;
     board.grow();
+    board.grow();
     int finalPuntuation = board.puntuation;
+    board.getApples().add(apple);
 
     assertNotEquals(initialPuntuation,finalPuntuation);
 
@@ -413,6 +414,48 @@ public class TestBoard {
     assertEquals(board.puntuation, testPuntuation);
 
   }
+
+  /*
+  @Test
+  public void testSnakeEatsAppleMock() throws IOException {
+    while(board.tileSize != 5){
+      board.update();
+    }
+
+
+    Apple app = new Apple(new MockRandomNumber());
+    ArrayList<Apple> apple = board.getApples();
+    apple.add(app);
+    //board.update();
+    ArrayList<SnakePart> s = board.getSnake();
+    s.get(s.size()-1).setxCord(25);
+    s.get(s.size()-1).setyCord(25);
+    board.eat();
+
+    assertNotEquals(5, board.tileSize);
+  }*/
+
+  /*
+  @Test
+  public void testSnakeEatsAppleWithMock() throws IOException {
+    while(board.tileSize != 5){
+      board.update();
+    }
+
+
+    Apple app = new Apple(new MockRandomNumber());
+    board.getApples().add(app);
+    //board.update();
+    board.getSnake().get(board.getSnake().size()-1).xCord = 25;
+    board.getSnake().get(board.getSnake().size()-1).yCord = 25;
+    board.eat();
+
+
+
+    assertNotEquals(5, board.tileSize);
+
+  }*/
+
 
 
 
