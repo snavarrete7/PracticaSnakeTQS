@@ -149,7 +149,9 @@ public void update() throws IOException {
     eat();
   }
 
-  comproveLimits();
+  if(comproveLimits() == true){
+    stop();
+  }
 
   if(snakeHitWithHim()==true){
     stop();
@@ -180,10 +182,12 @@ public void update() throws IOException {
 
   }
 
-  public void comproveLimits() throws IOException {
+  public boolean comproveLimits() throws IOException {
+    boolean outOfLimits = false;
     if(xCordSnake < 0 || xCordSnake > 49 || yCordSnake < 0 || yCordSnake > 49){
-      stop();
+      outOfLimits = true;
     }
+    return outOfLimits;
   }
 
   public boolean comproveApplesInBoard(){

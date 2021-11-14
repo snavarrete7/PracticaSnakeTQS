@@ -209,8 +209,6 @@ public class TestBoard {
   @Test
   public void testIsIn() throws IOException {
 
-    board.setxCordSnake(1);
-    board.setyCordSnake(1);
     board.start();
     board.update();
     assertEquals(board.getIsRunning(),true);
@@ -225,7 +223,10 @@ public class TestBoard {
     board.setyCordSnake(50);
     board.start();
     board.update();
+    boolean outOfLimits = board.comproveLimits();
+    assertEquals(outOfLimits, true);
     assertEquals(board.getIsRunning(),false);
+
   }
 
   @Test
@@ -236,6 +237,8 @@ public class TestBoard {
     board.start();
     board.update();
     assertEquals(board.getIsRunning(),true);
+    boolean outOfLimits = board.comproveLimits();
+    assertEquals(outOfLimits, false);
   }
 
   @Test
@@ -246,6 +249,8 @@ public class TestBoard {
     board.start();
     board.update();
     assertEquals(board.getIsRunning(),true);
+    boolean outOfLimits = board.comproveLimits();
+    assertEquals(outOfLimits, false);
   }
 
   @Test
@@ -256,6 +261,8 @@ public class TestBoard {
     board.start();
     board.update();
     assertEquals(board.getIsRunning(),false);
+    boolean outOfLimits = board.comproveLimits();
+    assertEquals(outOfLimits, true);
   }
   @Test
   public void testIsOut5() throws IOException {
@@ -265,6 +272,8 @@ public class TestBoard {
     board.start();
     board.update();
     assertEquals(board.getIsRunning(),true);
+    boolean outOfLimits = board.comproveLimits();
+    assertEquals(outOfLimits, false);
   }
   @Test
   public void testIsOut6() throws IOException {
@@ -274,6 +283,8 @@ public class TestBoard {
     board.start();
     board.update();
     assertEquals(board.getIsRunning(),true);
+    boolean outOfLimits = board.comproveLimits();
+    assertEquals(outOfLimits, false);
   }
   @Test
   public void testIsOut7() throws IOException {
@@ -283,6 +294,8 @@ public class TestBoard {
     board.start();
     board.update();
     assertEquals(board.getIsRunning(),true);
+    boolean outOfLimits = board.comproveLimits();
+    assertEquals(outOfLimits, false);
   }
   @Test
   public void testIsOut8() throws IOException {
@@ -292,6 +305,8 @@ public class TestBoard {
     board.start();
     board.update();
     assertEquals(board.getIsRunning(),true);
+    boolean outOfLimits = board.comproveLimits();
+    assertEquals(outOfLimits, false);
   }
   @Test
   public void testIsOut9() throws IOException {
@@ -301,6 +316,8 @@ public class TestBoard {
     board.start();
     board.update();
     assertEquals(board.getIsRunning(),false);
+    boolean outOfLimits = board.comproveLimits();
+    assertEquals(outOfLimits, true);
   }
   @Test
   public void testIsOut10() throws IOException {
@@ -310,6 +327,8 @@ public class TestBoard {
     board.start();
     board.update();
     assertEquals(board.getIsRunning(),false);
+    boolean outOfLimits = board.comproveLimits();
+    assertEquals(outOfLimits, true);
   }
 
   @Test
