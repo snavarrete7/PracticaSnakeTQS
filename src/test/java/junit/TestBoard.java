@@ -427,8 +427,9 @@ public class TestBoard {
 
     board.username = "Test";
     board.puntuation = 10;
-    JSONObject json = board.readJSON();
-    board.saveJSON(board.username,board.puntuation);
+    JSON jsonclass = new JSON();
+    JSONObject json = jsonclass.readJSON();
+    jsonclass.saveJSON(board.username,board.puntuation);
     int testPuntuation = (int)json.get(board.username);
     assertEquals(board.puntuation, testPuntuation);
 

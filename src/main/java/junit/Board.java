@@ -122,7 +122,8 @@ public class Board extends JPanel implements Runnable, KeyListener {
 
   public void stop() throws IOException {
     running=false;
-    saveJSON(username,puntuation);
+    JSON json = new JSON();
+    json.saveJSON(username,puntuation);
     //parar el thread
     try {
       thread.join();
@@ -233,31 +234,6 @@ public void update() throws IOException {
     return hit;
   }
 
-  public JSONObject readJSON(){
-    String info = "";
-    try {
-      BufferedReader file = new BufferedReader(new FileReader("database.json"));
-      info = file.readLine();
-      file.close();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    JSONObject json = new JSONObject(info);
-    return json;
-  }
-
-  public void saveJSON(String username, int puntuacio) throws IOException {
-
-    JSONObject json = readJSON();
-    if(json.isNull(username)){
-      json.put(username,puntuacio);
-    }else if((int)json.get(username) < puntuacio){
-      json.put(username,puntuacio);
-    }
-    FileWriter file = new FileWriter("database.json");
-    file.write(json.toString());
-    file.flush();
-  }
 
 
   @Override
