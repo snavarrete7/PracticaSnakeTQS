@@ -1,5 +1,6 @@
 package junit;
 import org.json.JSONObject;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
@@ -12,6 +13,21 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class TestBoard {
 
+  Board board;
+  JFrame window;
+
+  @BeforeEach
+  public void setUp(){
+    board = new Board();
+    window = new JFrame();
+    board.username = "User";
+    window.add(board);
+    window.setTitle("SnakeGame");
+    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    window.setLocationRelativeTo(null);
+    window.pack();
+    window.setVisible(true);
+  }
 
   @Test
   public void testBoardCreationNotNull(){
@@ -47,17 +63,7 @@ public class TestBoard {
   @Test
   public void testGameIsRunning(){
 
-    JFrame window = new JFrame();
-    Board board = new Board();
 
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
     board.start();
     assertEquals(board.getIsRunning(), true);
 
@@ -65,17 +71,7 @@ public class TestBoard {
 
   @Test
   public void testGameStopped() throws IOException {
-    JFrame window = new JFrame();
-    Board board = new Board();
 
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
 
     board.stop();
 
@@ -84,17 +80,7 @@ public class TestBoard {
 
   @Test
   public void testGameIsUpdating() throws IOException {
-    JFrame window = new JFrame();
-    Board board = new Board();
 
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
 
     board.update();
 
@@ -104,17 +90,7 @@ public class TestBoard {
 
   @Test
   public void testFirstSnake() throws IOException {
-    JFrame window = new JFrame();
-    Board board = new Board();
 
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
 
     board.update();
 
@@ -125,7 +101,7 @@ public class TestBoard {
   @Test
   public void testSnakeUpdatesMovementToRight(){
 
-    Board board = new Board();
+
     board.right = true;
     board.left = false;
     board.down = false;
@@ -146,7 +122,7 @@ public class TestBoard {
   @Test
   public void testSnakeUpdatesMovementToLeft(){
 
-    Board board = new Board();
+
     board.right = false;
     board.left = true;
     board.down = false;
@@ -167,7 +143,7 @@ public class TestBoard {
   @Test
   public void testSnakeUpdatesMovementToDown(){
 
-    Board board = new Board();
+
 
     board.right = false;
     board.left = false;
@@ -189,7 +165,7 @@ public class TestBoard {
   @Test
   public void testSnakeUpdatesMovementToUp(){
 
-    Board board = new Board();
+
 
     board.right = false;
     board.left = false;
@@ -211,15 +187,6 @@ public class TestBoard {
   public void testComproveApplesInBoardReturnTrue(){
 
 
-    JFrame window = new JFrame();
-    Board board = new Board();
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-    window.pack();
-    window.setVisible(true);
-
     boolean resultat = board.comproveApplesInBoard();
 
     assertEquals(true,resultat);
@@ -228,15 +195,6 @@ public class TestBoard {
 
   @Test
   public void testComproveApplesInBoardReturnFalse(){
-
-    JFrame window = new JFrame();
-    Board board = new Board();
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-    window.pack();
-    window.setVisible(true);
 
     board.setCreateNewApple(false);
     for(int i=0;i<5;i++){
@@ -253,18 +211,6 @@ public class TestBoard {
   @Test
   public void testIsIn() throws IOException {
 
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
-
     board.setxCordSnake(1);
     board.setyCordSnake(1);
     board.start();
@@ -277,18 +223,6 @@ public class TestBoard {
   @Test
   public void testIsOut1() throws IOException {
 
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
-
     board.setxCordSnake(50);
     board.setyCordSnake(50);
     board.start();
@@ -298,18 +232,6 @@ public class TestBoard {
 
   @Test
   public void testIsOut2() throws IOException {
-
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
 
     board.setxCordSnake(49);
     board.setyCordSnake(49);
@@ -321,18 +243,6 @@ public class TestBoard {
   @Test
   public void testIsOut3() throws IOException {
 
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
-
     board.setxCordSnake(0);
     board.setyCordSnake(0);
     board.start();
@@ -343,18 +253,6 @@ public class TestBoard {
   @Test
   public void testIsOut4() throws IOException {
 
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
-
     board.setxCordSnake(-1);
     board.setyCordSnake(-1);
     board.start();
@@ -363,18 +261,6 @@ public class TestBoard {
   }
   @Test
   public void testIsOut5() throws IOException {
-
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
 
     board.setxCordSnake(20);
     board.setyCordSnake(20);
@@ -385,18 +271,6 @@ public class TestBoard {
   @Test
   public void testIsOut6() throws IOException {
 
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
-
     board.setxCordSnake(35);
     board.setyCordSnake(35);
     board.start();
@@ -405,18 +279,6 @@ public class TestBoard {
   }
   @Test
   public void testIsOut7() throws IOException {
-
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
 
     board.setxCordSnake(1);
     board.setyCordSnake(1);
@@ -427,18 +289,6 @@ public class TestBoard {
   @Test
   public void testIsOut8() throws IOException {
 
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
-
     board.setxCordSnake(48);
     board.setyCordSnake(48);
     board.start();
@@ -447,18 +297,6 @@ public class TestBoard {
   }
   @Test
   public void testIsOut9() throws IOException {
-
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
 
     board.setxCordSnake(-100);
     board.setyCordSnake(-100);
@@ -469,18 +307,6 @@ public class TestBoard {
   @Test
   public void testIsOut10() throws IOException {
 
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
-
     board.setxCordSnake(100);
     board.setyCordSnake(100);
     board.start();
@@ -490,17 +316,6 @@ public class TestBoard {
 
   @Test
   public void testSnakeGrows(){
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
 
     int initialSize = board.getTileSize();
     board.grow();
@@ -510,16 +325,6 @@ public class TestBoard {
 
   @Test
   public void testAppleDisapearAndApearOnANewPositionWhenSnakeEats() throws IOException {
-
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-    window.pack();
-    window.setVisible(true);
 
     board.start();
     board.update();
@@ -542,17 +347,6 @@ public class TestBoard {
 
   @Test
   public void testCreateNewAppleWhenGameStart() throws IOException {
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
 
     board.update();
 
@@ -561,16 +355,6 @@ public class TestBoard {
 
   @Test
   public void testSnakeHitWithHimTrue() throws IOException {
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
 
     board.update();
     ArrayList<SnakePart> snake = board.getSnake();
@@ -590,16 +374,6 @@ public class TestBoard {
 
   @Test
   public void testSnakeHitWithHimFalse() throws IOException {
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
 
     board.update();
     ArrayList<SnakePart> snake = board.getSnake();
@@ -619,16 +393,6 @@ public class TestBoard {
 
   @Test
   public void testIncrementPutuation(){
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
 
     int initialPuntuation = board.puntuation;
     board.grow();
@@ -640,17 +404,6 @@ public class TestBoard {
 
   @Test
   public void testJSON() throws IOException {
-
-    JFrame window = new JFrame();
-    Board board = new Board();
-
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-
-    window.pack();
-    window.setVisible(true);
 
     board.username = "Test";
     board.puntuation = 10;

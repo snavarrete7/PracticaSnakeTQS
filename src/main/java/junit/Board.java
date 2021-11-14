@@ -204,7 +204,7 @@ public void update() throws IOException {
   public void grow(){
     tileSize++;
     puntuation++;
-    miliseconds = miliseconds + 5000;
+    miliseconds = miliseconds + 50000;
     apples.remove(0);
     Apple apple = new Apple();
     apples.add(apple);
