@@ -29,6 +29,7 @@ public class Board extends JPanel implements Runnable, KeyListener {
   private ArrayList<Apple> apples;
   private Random r = new Random();
   boolean snakeUpdated;
+  boolean outOfLimits;
   public int xCordSnake = 10, yCordSnake = 10, tileSize = 5, ticks = 0, miliseconds = 750000;
 
   public int getWidth(){return WIDTH;}
@@ -142,17 +143,23 @@ public void update() throws IOException {
 
   if(applesInBoard == true){
     eat();
+    updatingGame = true;
   }
 
   if(comproveLimits() == true){
     stop();
+  } else {
+    updatingGame = true;
   }
 
   if(snakeHitWithHim()==true){
     stop();
+  }else{
+    updatingGame = true;
   }
 
-  updatingGame = true;
+
+  //updatingGame = true;
 }
 
   public void updateSnake(boolean right, boolean left, boolean down, boolean up){
@@ -180,9 +187,11 @@ public void update() throws IOException {
   }
 
   public boolean comproveLimits() throws IOException {
-    boolean outOfLimits = false;
+
     if(xCordSnake < 0 || xCordSnake > 49 || yCordSnake < 0 || yCordSnake > 49){
       outOfLimits = true;
+    }else{
+      outOfLimits = false;
     }
     return outOfLimits;
   }
@@ -219,7 +228,7 @@ public void update() throws IOException {
 
 
   public boolean snakeHitWithHim(){
-    boolean hit = false;
+    boolean hit =false;
     for (int i = 0; i < snake.size(); i++){
       if(xCordSnake == snake.get(i).getXCord() && yCordSnake == snake.get(i).getYCord()){
         if(i != snake.size() -1 ){  //comprovar que no acaba de empezar la partida, sino pararia justo al empezar
