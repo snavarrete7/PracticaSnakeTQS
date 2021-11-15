@@ -176,14 +176,19 @@ public void update() throws IOException {
       s = new SnakePart(xCordSnake, yCordSnake, 10);  ///añadir la parte del snake a la nueva posicion
       snake.add(s);
 
-      if (snake.size() > tileSize) {    ///eliminar la ultima snakePart para seguir manteniendo los mismos snakeParts
-        snake.remove(0);
-        snakeUpdated = true;
-      }
-      //updatingSnake = true;
+      moveSnake();
 
     }
 
+  }
+
+  public void moveSnake(){
+    if (snake.size() > tileSize) {    ///eliminar la ultima snakePart para seguir manteniendo los mismos snakeParts
+      snake.remove(0);
+      snakeUpdated = true;
+    }else{
+      snakeUpdated = false;
+    }
   }
 
   public boolean comproveLimits() throws IOException {

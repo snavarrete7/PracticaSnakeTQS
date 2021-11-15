@@ -431,6 +431,7 @@ public class TestBoard {
     JSON jsonclass = new JSON();
     JSONObject json = jsonclass.readJSON();
     jsonclass.saveJSON(board.username,board.puntuation);
+
     int testPuntuation = (int)json.get(board.username);
     assertEquals(board.puntuation, testPuntuation);
 
@@ -462,6 +463,14 @@ public class TestBoard {
 
     assertEquals(false, board.snakeUpdated);
   }
+
+  @Test
+  public void testMoveSnake(){
+    ArrayList<SnakePart> snake = board.getSnake();
+    board.tileSize = snake.size() + board.tileSize;
+    assertEquals(false, board.snakeUpdated);
+  }
+
 
   /*
   @Test
