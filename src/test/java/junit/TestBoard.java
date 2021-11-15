@@ -453,24 +453,10 @@ public class TestBoard {
 
   @Test
   public void testDontRemoveLastPartSnake(){
-    for(int i=0; i<5;i++){
-      SnakePart part = new SnakePart(10,10,10);
-      board.getSnake().add(part);
-    }
-    board.ticks = board.miliseconds + 10000;
-    board.tileSize = 20;
-    board.updateSnake(true,false,false,false);
-
-    assertEquals(false, board.snakeUpdated);
-  }
-
-  @Test
-  public void testMoveSnake(){
     ArrayList<SnakePart> snake = board.getSnake();
     board.tileSize = snake.size() + board.tileSize;
     assertEquals(false, board.snakeUpdated);
   }
-
 
   /*
   @Test
