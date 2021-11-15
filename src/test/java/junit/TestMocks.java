@@ -1,5 +1,8 @@
 package junit;
-import org.json.JSONObject;
+import junit.CONTROLADOR.Board;
+import junit.VISTA.Apple;
+import junit.VISTA.MockRandomNumber;
+import junit.VISTA.SnakePart;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

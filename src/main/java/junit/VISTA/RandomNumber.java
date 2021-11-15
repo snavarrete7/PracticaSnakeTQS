@@ -1,4 +1,4 @@
-package junit;
+package junit.VISTA;
 
 public class RandomNumber {
 

@@ -1,4 +1,4 @@
-package junit;
+package junit.MODEL;
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,6 +7,7 @@ import java.io.IOException;
 
 public class JSON {
 
+  //Leer el JSON y devolverlo
   public JSONObject readJSON(){
     String info = "";
     try {
@@ -20,6 +21,7 @@ public class JSON {
     return json;
   }
 
+  //Guardar el nombre de usuario y puntuacion en el archivo database.json
   public void saveJSON(String username, int puntuacio) throws IOException {
 
     JSONObject json = readJSON();

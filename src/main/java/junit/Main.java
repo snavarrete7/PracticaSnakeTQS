@@ -1,6 +1,7 @@
 package junit;
+import junit.CONTROLADOR.Board;
+
 import javax.swing.*;
-import java.awt.*;
 import java.util.Scanner;
 
 

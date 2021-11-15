@@ -1,14 +1,14 @@
 package junit;
+import junit.CONTROLADOR.Board;
+import junit.MODEL.JSON;
+import junit.VISTA.Apple;
+import junit.VISTA.SnakePart;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import javax.swing.*;
-
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -43,72 +43,43 @@ public class TestBoard {
     assertEquals(new Board().getWidth(), 500);
 
   }
-  /*
-  @Test
-  public void testBoardDraw() throws IOException {
-    JFrame window = new JFrame();
-    Board board = new Board();
-    window.add(board);
-    window.setTitle("SnakeGame");
-    window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    window.setLocationRelativeTo(null);
-    window.pack();
-    window.setVisible(true);
-
-    board.run();
-
-    assertEquals(true, board.boardDraw);
-
-  }*/
 
   @Test
   public void testGameIsRunning(){
 
-
     board.start();
     assertEquals(board.getIsRunning(), true);
-
   }
 
   @Test
   public void testGameStopped() throws IOException {
 
-
     board.stop();
-
     assertEquals(board.getIsRunning(),false);
   }
 
   @Test
   public void testGameIsUpdating() throws IOException {
 
-
     board.update();
-
     assertEquals(board.getUpdatingGame(), true);
   }
 
-
   @Test
   public void testFirstSnake() throws IOException {
-
-
     board.update();
-
-    assertEquals(board.getFirstSnake(),true);
+    assertEquals(board.getFirstSnake(),true);      //primera snake creada
   }
-
 
   @Test
   public void testSnakeUpdatesMovementToRight(){
-
 
     board.right = true;
     board.left = false;
     board.down = false;
     board.up = false;
 
-    board.ticks = board.miliseconds + 10000;
+    board.ticks = board.miliseconds + 10000;     //forzamos la actualizacion del juego para poder actualizar el movimiento (hacemos que los tiks sean mas grandes que el periodo de actualizacion)
     board.updateSnake(board.right,board.left,board.down,board.up);
 
     int xCordSnake = board.getxCordSnake();
@@ -129,7 +100,7 @@ public class TestBoard {
     board.down = false;
     board.up = false;
 
-    board.ticks = board.miliseconds + 10000;
+    board.ticks = board.miliseconds + 10000;    //forzamos la actualizacion del juego para poder actualizar el movimiento (hacemos que los tiks sean mas grandes que el periodo de actualizacion)
     board.updateSnake(board.right,board.left,board.down,board.up);
 
     int xCordSnake = board.getxCordSnake();
@@ -149,7 +120,7 @@ public class TestBoard {
     board.down = true;
     board.up = false;
 
-    board.ticks = board.miliseconds + 10000;
+    board.ticks = board.miliseconds + 10000;   //forzamos la actualizacion del juego para poder actualizar el movimiento (hacemos que los tiks sean mas grandes que el periodo de actualizacion)
     board.updateSnake(board.right,board.left,board.down,board.up);
 
     int xCordSnake = board.getxCordSnake();
@@ -171,7 +142,7 @@ public class TestBoard {
     board.down = false;
     board.up = true;
 
-    board.ticks = board.miliseconds + 10000;
+    board.ticks = board.miliseconds + 10000;   //forzamos la actualizacion del juego para poder actualizar el movimiento (hacemos que los tiks sean mas grandes que el periodo de actualizacion)
     board.updateSnake(board.right,board.left,board.down,board.up);
 
     int xCordSnake = board.getxCordSnake();
@@ -185,9 +156,7 @@ public class TestBoard {
   @Test
   public void testComproveApplesInBoardReturnTrue(){
 
-
-    boolean resultat = board.comproveApplesInBoard();
-
+    boolean resultat = board.comproveApplesInBoard();   //si no hay manzanas en el tablero devuelve true porque ha creado una nueva
     assertEquals(true,resultat);
 
   }
@@ -196,10 +165,10 @@ public class TestBoard {
   public void testComproveApplesInBoardReturnFalse(){
 
     board.setCreateNewApple(false);
-    for(int i=0;i<5;i++){
+    for(int i=0;i<5;i++){                //bucle para forzar que se añadan "i" manzanas en el tablero
       Apple apple = new Apple();
       board.getApples().add(apple);
-    }
+    }                                    //se comprueba que no puede haber mas de una manzana en el tablero, por lo tanto devuelve false
 
     boolean resultat = board.comproveApplesInBoard();
 
@@ -216,7 +185,7 @@ public class TestBoard {
 
   }
 
-  //Tests valors limits del 1 al 10
+  //Tests valorer limites del 1 al 10
   @Test
   public void testIsOut1() throws IOException {
 
@@ -358,7 +327,7 @@ public class TestBoard {
     int yNewCordApple = apple.get(0).getyCord();
 
 
-    assertNotEquals(11, xNewCordApple);
+    assertNotEquals(11, xNewCordApple);         //compruebas que la posicion de la nueva apple no sea igual a la anterior
     assertNotEquals(10, yNewCordApple);
 
   }
@@ -367,7 +336,6 @@ public class TestBoard {
   public void testCreateNewAppleWhenGameStart() throws IOException {
 
     board.update();
-
     assertEquals(board.getCreateNewApple(),true);
   }
 
@@ -375,9 +343,9 @@ public class TestBoard {
   public void testSnakeHitWithHimTrue() throws IOException {
 
     board.update();
-    ArrayList<SnakePart> snake = board.getSnake();
+    ArrayList<SnakePart> snake = board.getSnake();        //forzamos la posicion de la cabeza con una de su cuerpo para forzar el choque
 
-    while(snake.size() < 2){
+    while(snake.size() < 2){   //bucle para evitar errores de creacion de la snake
       board.update();
     }
     snake.get(0).xCord = 12;
@@ -394,7 +362,7 @@ public class TestBoard {
   public void testSnakeHitWithHimFalse() throws IOException {
 
     board.update();
-    ArrayList<SnakePart> snake = board.getSnake();
+    ArrayList<SnakePart> snake = board.getSnake();     //realizamos lo contrario que en la anterior
 
     while(snake.size() < 2){
       board.update();
@@ -424,7 +392,7 @@ public class TestBoard {
   }
 
   @Test
-  public void testJSON() throws IOException {
+  public void testJSON() throws IOException {     //test para comprobar que se guarda bien la base de datos
 
     board.username = "Test";
     board.puntuation = 10;
@@ -438,17 +406,17 @@ public class TestBoard {
   }
 
   @Test
-  public void testRemoveLastPartSnake(){
+  public void testRemoveLastPartSnake(){ //Test para comprobar la funcion moveSnake()
 
     for(int i=0; i<5;i++){
-      SnakePart part = new SnakePart(10,10,10);
+      SnakePart part = new SnakePart(10,10,10);      //creacion de snake de 5 posiciones
       board.getSnake().add(part);
     }
-    board.ticks = board.miliseconds + 10000;
+    board.ticks = board.miliseconds + 10000;         //forzamos la actualizacion
     board.tileSize = 1;
-    board.updateSnake(true,false,false,false);
-
-    assertEquals(true, board.snakeUpdated);
+    board.updateSnake(true,false,false,false);   //si el tamaño del array snake es mayor que su tamaño real (tileSize) quiere decir
+                                                                     //que la snake se ha movido para una posicion entonces se elimina la parte de la cola para mantener el tamaño real
+    assertEquals(true, board.snakeUpdated);                   //y causar el efecto de movimiento
   }
 
   @Test
@@ -457,49 +425,6 @@ public class TestBoard {
     board.tileSize = snake.size() + board.tileSize;
     assertEquals(false, board.snakeUpdated);
   }
-
-  /*
-  @Test
-  public void testSnakeEatsAppleMock() throws IOException {
-    while(board.tileSize != 5){
-      board.update();
-    }
-
-
-    Apple app = new Apple(new MockRandomNumber());
-    ArrayList<Apple> apple = board.getApples();
-    apple.add(app);
-    //board.update();
-    ArrayList<SnakePart> s = board.getSnake();
-    s.get(s.size()-1).setxCord(25);
-    s.get(s.size()-1).setyCord(25);
-    board.eat();
-
-    assertNotEquals(5, board.tileSize);
-  }*/
-
-  /*
-  @Test
-  public void testSnakeEatsAppleWithMock() throws IOException {
-    while(board.tileSize != 5){
-      board.update();
-    }
-
-
-    Apple app = new Apple(new MockRandomNumber());
-    board.getApples().add(app);
-    //board.update();
-    board.getSnake().get(board.getSnake().size()-1).xCord = 25;
-    board.getSnake().get(board.getSnake().size()-1).yCord = 25;
-    board.eat();
-
-
-
-    assertNotEquals(5, board.tileSize);
-
-  }*/
-
-
 
 
 }

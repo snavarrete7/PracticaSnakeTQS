@@ -1,5 +1,6 @@
 package junit;
-import org.junit.jupiter.api.BeforeAll;
+import junit.CONTROLADOR.Board;
+import junit.VISTA.SnakePart;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
@@ -14,16 +15,12 @@ public class TestSnake{
 
   @Test
   public void testSnakeCreationNotNull() {
-
     assertNotNull(new SnakePart());
-
   }
 
   @Test
   public void testSnakeCreationWithArguments(){
-
     assertNotNull(new SnakePart(10,10,10).createSnake());
-
   }
 
 
@@ -53,7 +50,7 @@ public class TestSnake{
 
     board.run();
 
-    assertEquals(true, board.getSnake().get(0).snakeDraw);
+    assertEquals(true, board.getSnake().get(0).snakeDraw);  //variable que nos indica si ha sido dibujado
 
 
   }
@@ -69,14 +66,14 @@ public class TestSnake{
     window.pack();
     window.setVisible(true);
 
-    while(board.getxCordSnake()== 10 && board.getyCordSnake()== 10){
+    while(board.getxCordSnake()== 10 && board.getyCordSnake()== 10){  //mientras el snake esta en la posicion inicial, forzar la actualizacion
       board.update();
     }
 
     int xCordSnake = board.getxCordSnake();
     int yCordSnake = board.getxCordSnake();
 
-    assertNotEquals(10,xCordSnake);
+    assertNotEquals(10,xCordSnake);                         //si las cordenadas no son iguales a las iniciales es que se ha movido
     assertNotEquals(10,yCordSnake);
   }
 
@@ -101,7 +98,7 @@ public class TestSnake{
     int xCordSnake = board.getxCordSnake();
     int yCordSnake = board.getxCordSnake();
 
-    if(xCordSnake > 10 && yCordSnake > 10){
+    if(xCordSnake > 10 && yCordSnake > 10){      //las coordenadas nos indican que se haya movido a la derecha al iniciar el juego
       snakeMovesRight = true;
     }
 

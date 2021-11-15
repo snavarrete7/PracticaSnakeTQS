@@ -1,4 +1,4 @@
-package junit;
+package junit.VISTA;
 
 import java.awt.*;
 
@@ -40,6 +40,7 @@ public class SnakePart{
   public int getWidth(){ return width; }
   public int getHeight(){ return height; }
 
+  //Funcion para dibujar el snake
   public void draw(Graphics g) {
     g.setColor(Color.GREEN);
     g.fillRect(xCord * width, yCord * height, width, height);

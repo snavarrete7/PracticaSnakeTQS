@@ -1,5 +1,7 @@
 package junit;
-import org.junit.jupiter.api.BeforeAll;
+import junit.CONTROLADOR.Board;
+import junit.VISTA.Apple;
+import junit.VISTA.RandomNumber;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
@@ -12,14 +14,11 @@ public class TestApple {
   @Test
   public void testAppleCreationNotNull() {
     assertNotNull(new Apple());
-
   }
 
   @Test
   public void testAppleCreationWithArgument(){
     assertNotNull(new Apple(10,10,10).createApple());
-
-
   }
 
   @Test
@@ -48,7 +47,7 @@ public class TestApple {
     window.setVisible(true);
 
     board.run();
-    boolean appleDraw = board.getApples().get(0).appleDraw;
+    boolean appleDraw = board.getApples().get(0).appleDraw;  //variable que nos indica cuando se ha dibujado
     assertEquals(true, appleDraw);
   }
 

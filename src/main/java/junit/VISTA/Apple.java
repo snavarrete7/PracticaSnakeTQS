@@ -1,4 +1,4 @@
-package junit;
+package junit.VISTA;
 
 import java.awt.*;
 import java.util.Random;
@@ -29,6 +29,7 @@ public class Apple {
     this.height = size;
   }
 
+  //Contructor para utilizar los mocks
   public Apple(RandomNumber randObject){
     this.rand = randObject;
     double randX = calculateRandomApple(49);
@@ -54,6 +55,7 @@ public class Apple {
   public void setxCord(int cord){ xCord=cord;}
   public void setyCord(int cord){yCord=cord;}
 
+  //Funcion para dibujar el apple
   public void draw(Graphics g) {
     g.setColor(Color.RED);
     g.fillRect(xCord * width, yCord * height, width, height);
