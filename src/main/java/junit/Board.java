@@ -28,7 +28,7 @@ public class Board extends JPanel implements Runnable, KeyListener {
   private ArrayList<SnakePart> snake;
   private ArrayList<Apple> apples;
   private Random r = new Random();
-
+  boolean snakeUpdated;
   public int xCordSnake = 10, yCordSnake = 10, tileSize = 5, ticks = 0, miliseconds = 750000;
 
   public int getWidth(){return WIDTH;}
@@ -157,7 +157,7 @@ public void update() throws IOException {
 
   public void updateSnake(boolean right, boolean left, boolean down, boolean up){
 
-    boolean snakeUpdated = false;
+    snakeUpdated = false;
     if(ticks > miliseconds) {    //cada x milisegundos se actualiza, tambien sirve para medir la velocidad de la snake
       if (right) xCordSnake++;
       if (left) xCordSnake--;
@@ -171,7 +171,7 @@ public void update() throws IOException {
 
       if (snake.size() > tileSize) {    ///eliminar la ultima snakePart para seguir manteniendo los mismos snakeParts
         snake.remove(0);
-        // snakeUpdated = true;
+        snakeUpdated = true;
       }
       //updatingSnake = true;
 

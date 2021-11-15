@@ -447,7 +447,20 @@ public class TestBoard {
     board.tileSize = 1;
     board.updateSnake(true,false,false,false);
 
-    assertEquals(true, true);
+    assertEquals(true, board.snakeUpdated);
+  }
+
+  @Test
+  public void testDontRemoveLastPartSnake(){
+    for(int i=0; i<5;i++){
+      SnakePart part = new SnakePart(10,10,10);
+      board.getSnake().add(part);
+    }
+    board.ticks = board.miliseconds + 10000;
+    board.tileSize = 20;
+    board.updateSnake(true,false,false,false);
+
+    assertEquals(false, board.snakeUpdated);
   }
 
   /*
